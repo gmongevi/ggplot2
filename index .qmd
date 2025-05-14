@@ -235,3 +235,28 @@ geom_bar(
 ggplotly(grafico_barras_ggplot2, tooltip = "text") |> 
   config(locale = 'es')
 ```
+
+
+
+# Barras agrupadas
+
+```{r}
+#| label: promedio-grafico-onu
+#| warning: false
+#| message: false
+# Gráfico de barras agrupadas por región de la ONU y nivel de economía
+grafico_barras_ggplot2 <-
+paises |>
+  ggplot(aes(x = REGION_UN, fill = ECONOMY)) +
+  geom_bar(position = "dodge") +
+  ggtitle("Cantidad de países por región de la ONU y nivel de economía") +
+  xlab("Región de la ONU") +
+  ylab("Cantidad de países") +
+  labs(fill = "Nivel de economía") +
+  theme_minimal()
+
+# Gráfico de barras plotly
+ggplotly(grafico_barras_ggplot2) |> 
+  config(locale = 'es')
+```
+
